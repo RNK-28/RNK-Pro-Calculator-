@@ -1,0 +1,276 @@
+ :root {
+            --primary: #6C5CE7;
+            --secondary: #00CEFF;
+            --accent: #FF7675;
+            --dark: #2D3436;
+            --light: #F5F6FA;
+            --success: #00B894;
+            --warning: #FDCB6E;
+            --panel-bg: rgba(45, 52, 54, 0.9);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #F5F6FA;
+            --text-secondary: #B2BEC3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', 'Roboto', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2D3436 0%, #000000 100%);
+            color: var(--text-primary);
+            perspective: 1000px;
+            overflow: hidden;
+        }
+        
+        .calculator-container {
+            position: relative;
+            width: 380px;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .calculator {
+            width: 100%;
+            background: var(--panel-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5),
+                        0 0 0 1px rgba(255, 255, 255, 0.1),
+                        0 0 30px rgba(108, 92, 231, 0.3);
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transform: rotateX(5deg);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .calculator:hover {
+            transform: rotateX(5deg) translateY(-10px);
+            box-shadow: 0 35px 55px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(255, 255, 255, 0.2),
+                        0 0 40px rgba(108, 92, 231, 0.4);
+        }
+        
+        .display {
+            padding: 25px;
+            text-align: right;
+            position: relative;
+            min-height: 120px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .brand {
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            font-size: 12px;
+            color: var(--secondary);
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+        
+        .history {
+            min-height: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            opacity: 0.8;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .current {
+            font-size: 42px;
+            font-weight: 500;
+            word-wrap: break-word;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        button {
+            border: none;
+            outline: none;
+            padding: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        button:hover::before {
+            opacity: 1;
+        }
+        
+        button:active {
+            transform: scale(0.95);
+            filter: brightness(1.2);
+        }
+        
+        button.number {
+            font-weight: 500;
+        }
+        
+        button.operator {
+            background: rgba(108, 92, 231, 0.3);
+            font-weight: 700;
+        }
+        
+        button.function {
+            background: rgba(0, 206, 255, 0.2);
+            color: var(--secondary);
+            font-size: 16px;
+        }
+        
+        button.equals {
+            background: var(--success);
+            grid-column: span 2;
+            font-weight: 700;
+        }
+        
+        button.clear {
+            background: var(--accent);
+        }
+        
+        button.delete {
+            background: rgba(253, 203, 110, 0.3);
+            color: var(--warning);
+        }
+        
+        button.memory {
+            background: rgba(178, 190, 195, 0.1);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .scientific-panel {
+            display: none;
+        }
+        
+        .scientific-panel.active {
+            display: grid;
+        }
+        
+        .decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+        }
+        
+        .circle-1 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            top: -50px;
+            left: -50px;
+            animation: pulse 8s infinite alternate;
+        }
+        
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            bottom: -100px;
+            right: -100px;
+            animation: pulse 10s infinite alternate-reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg); }
+            50% { transform: translateY(-20px) rotateX(5deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.1); opacity: 0.5; }
+        }
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }

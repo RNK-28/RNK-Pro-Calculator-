@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.N.K Business Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .logo-container {
+            position: relative;
+            width: 400px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .letter-container {
+            display: flex;
+            align-items: flex-end;
+            height: 120px;
+            margin-bottom: 10px;
+        }
+        
+        .letter {
+            font-size: 80px;
+            font-weight: bold;
+            color: #ff0000;
+            position: relative;
+            opacity: 0;
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        .letter-r {
+            animation: fadeIn 0.8s ease-out 0.2s forwards;
+        }
+        
+        .letter-n {
+            animation: fadeIn 0.8s ease-out 0.5s forwards;
+        }
+        
+        .letter-k {
+            animation: fadeIn 0.8s ease-out 0.8s forwards;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #ff0000;
+            border-radius: 50%;
+            margin: 0 10px;
+            position: relative;
+            bottom: 15px;
+            opacity: 0;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+        }
+        
+        .dot-1 {
+            animation: dotFadeIn 0.6s ease-out 0.4s forwards;
+        }
+        
+        .dot-2 {
+            animation: dotFadeIn 0.6s ease-out 0.7s forwards;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes dotFadeIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            70% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .connecting-line {
+            position: relative;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0000, #ff6666);
+            width: 0;
+            opacity: 0;
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            animation: drawLine 0.8s ease-out 1.2s forwards;
+        }
+        
+        @keyframes drawLine {
+            0% { width: 0; opacity: 0; }
+            100% { width: 250px; opacity: 1; }
+        }
+        
+        .business-text {
+            color: #ff0000;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+            animation: fadeInText 0.8s ease-out 1.5s forwards;
+        }
+        
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse-circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 0, 0, 0.2);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: pulse 3s ease-out 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            50% { opacity: 0.4; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="letter-container">
+            <div class="letter letter-r">R</div>
+            <div class="dot dot-1"></div>
+            <div class="letter letter-n">N</div>
+            <div class="dot dot-2"></div>
+            <div class="letter letter-k">K</div>
+        </div>
+        <div class="connecting-line"></div>
+        <div class="business-text">Production</div>
+        <div class="pulse-circle"></div>
+    </div>
+ <script>
+        // Redirect to main page after 5 seconds
+        setTimeout(function() {
+            window.location.href = 'calculator.html';
+        }, 5000);
+    </script>
+</body>
+</html>
